@@ -1,0 +1,18 @@
+void setup() {
+  size(800, 600);
+}
+
+void draw() {
+  background(135, 206, 250); // color RGB para el cielo azul claro
+  
+  fill(255, 255, 0); // color amarillo
+  ellipse(700, 100, 100, 100); 
+
+  fill(34, 139, 34); // color RGB para el verde oscuro
+  triangle(0, 400, 200, 200, 400, 400); // triángulo izquierdo
+  triangle(400, 400, 600, 250, 800, 400); // triángulo derecho
+
+
+  fill(124, 252, 0); // color RGB para el verde claro
+  rect(0, 400, 800, 200); // rectángulo del prado
+}
