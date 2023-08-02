@@ -1,0 +1,64 @@
+float ellipseX, ellipseY;
+
+int[][] laberinto = {
+  {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+  {1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1},  
+  {1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1}, 
+  {1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1}, 
+  {1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1}, 
+  {1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1}, 
+  {1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1}, 
+  {1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1}, 
+  {1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1}, 
+  {1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1}, 
+  {1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1}, 
+  {1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1}, 
+   {1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+};
+int tamCelda = 50; // tamaño de las celdas del laberinto
+
+void setup() {
+  size(800, 800);
+  ellipseX = 75;
+  ellipseY = 100;
+}
+
+void draw() {
+  background(0);
+  
+  // Dibujar laberinto
+  for (int i = 0; i < laberinto.length; i++) {
+    for (int j = 0; j < laberinto[i].length; j++) {
+      if (laberinto[i][j] == 1) {
+        fill(255); 
+        rect(j*tamCelda, i*tamCelda, tamCelda, tamCelda);
+      }
+    }
+  }
+  
+  fill(255, 255, 0); 
+  ellipse(ellipseX, ellipseY, 50, 50);
+}
+
+void keyPressed() {
+  float speed = 10.0;
+  float newX = ellipseX, newY = ellipseY;
+  
+  if (keyCode == UP) {
+    newY -= speed;
+  } else if (keyCode == DOWN) {
+    newY += speed;
+  } else if (keyCode == LEFT) {
+    newX -= speed;
+  } else if (keyCode == RIGHT) {
+    newX += speed;
+  }
+  
+  
+  int i = int(newY / tamCelda);
+  int j = int(newX / tamCelda);
+  if (laberinto[i][j] == 0) { // solo mover si la celda está vacía
+    ellipseX = newX;
+    ellipseY = newY;
+  }
+}
