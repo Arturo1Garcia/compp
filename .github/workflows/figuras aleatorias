@@ -1,0 +1,40 @@
+void setup() {
+  size(800, 600); 
+  background(255); 
+}
+
+void draw() {
+  float shapeChoice = random(1);
+
+  if (shapeChoice < 0.33) {
+    drawRandomCircle();
+  } else if (shapeChoice < 0.66) {
+    drawRandomRectangle();
+  } else {
+    drawRandomTriangle();
+  }
+}
+
+void drawRandomCircle() {
+  fill(random(255), random(255), random(255)); 
+  ellipse(random(width), random(height), random(50, 150), random(50, 150));
+}
+
+void drawRandomRectangle() {
+  fill(random(255), random(255), random(255)); 
+  rect(random(width), random(height), random(50, 150), random(50, 150));
+}
+
+void drawRandomTriangle() {
+  fill(random(255), random(255), random(255)); 
+  float x1 = random(width);
+  float y1 = random(height);
+  
+  float x2 = random(width);
+  float y2 = random(height);
+  
+  float x3 = random(width);
+  float y3 = random(height);
+  
+  triangle(x1, y1, x2, y2, x3, y3);
+}
