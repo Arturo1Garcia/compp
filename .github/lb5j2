@@ -1,0 +1,18 @@
+def ordenamiento_seleccion(lista):
+    for i in range(len(lista)):
+        indice_minimo = i
+        for j in range(i+1, len(lista)):
+            if lista[j] < lista[indice_minimo]:
+                indice_minimo = j
+        lista[i], lista[indice_minimo] = lista[indice_minimo], lista[i]
+    return lista
+
+def main():
+    entrada = input("Ingresa una serie de números separados por espacios: ")
+    numeros_cadenas = entrada.split()
+    numeros = [int(numero) for numero in numeros_cadenas]
+    ordenamiento_seleccion(numeros)
+    print("Números ordenados:", numeros)
+
+if __name__ == "__main__":
+    main()
